@@ -19,7 +19,7 @@ class StringPrefEditor @JvmOverloads constructor(
 
   init {
     LayoutInflater.from(context).inflate(R.layout.item_editor_string, this, true)
-    valueView = findViewById(R.id.pref_value) as EditText
+    valueView = findViewById(R.id.pref_value)!!
     valueView.addTextChangedListener(object : TextWatcher {
       override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
         onStringValueChangeListener?.invoke(charSequence.toString())

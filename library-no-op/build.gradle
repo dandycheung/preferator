@@ -1,32 +1,33 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'com.novoda.bintray-release'
+// apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 29
+    compileSdk 33
+    namespace 'com.sloydev.library_no_op'
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 33
+    }
 
-    }
-    lintOptions {
-        abortOnError false
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lint {
+        abortOnError false
     }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 }
 
+/*
 publish {
     userOrg = 'sloy'
     groupId = 'com.sloydev'
@@ -35,3 +36,4 @@ publish {
     desc = 'Edit your app\'s SharedPreferences from your device'
     website = 'https://github.com/sloy/preferator'
 }
+// */
