@@ -125,7 +125,7 @@ class PreferatorActivity : AppCompatActivity() {
                 } else if (item.itemId == R.id.menu_pref_share) {
                     val sharedMessage =
                         String.format("\"%s\":\"%s\"", prefKey, prefValue.toString())
-                    ShareCompat.IntentBuilder.from(this@PreferatorActivity)
+                    ShareCompat.IntentBuilder(this@PreferatorActivity)
                         .setText(sharedMessage)
                         .setType("text/plain")
                         .startChooser()
@@ -242,7 +242,6 @@ class PreferatorActivity : AppCompatActivity() {
         SET("set");
 
         companion object {
-
             fun of(value: Any): Type {
                 return when (value) {
                     is String -> STRING
