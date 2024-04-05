@@ -34,6 +34,6 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.preference:preference-ktx:1.2.1'
 
-    debugImplementation project(':library')
-    releaseImplementation project(':library-no-op')
+    debugImplementation project(':preferator')
+    releaseImplementation project(':preferator-no-op')
 }
