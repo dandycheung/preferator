@@ -17,12 +17,15 @@ import java.io.File
 
 class PreferatorActivity : AppCompatActivity() {
     private var sectionsView: ViewGroup? = null
+    private var perfsList: ArrayList<String>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_prefereitor)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.subtitle = getApplicationName()
+
+        perfsList = intent.getStringArrayListExtra(Preferator.EXTRA_PERFS_LIST)
 
         sectionsView = findViewById(R.id.sections)!!
         parsePreferences()
@@ -38,12 +41,15 @@ class PreferatorActivity : AppCompatActivity() {
     }
 
     private fun parsePreferences() {
-        // TODO
+        // TODO: improve it
         val rootPath = applicationInfo.dataDir + "/shared_prefs"
         val prefsFolder = File(rootPath)
         prefsFolder.list()
             ?.map {
                 truncateXmlExtension(it)
+            }
+            ?.filter {
+                (perfsList == null) || (perfsList!!.contains(it))
             }
             ?.sortedWith(compareBy({ SdkFilter.isSdkPreference(it) }, { it }))
             ?.forEach {
